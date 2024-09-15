@@ -33,6 +33,9 @@
             <a href="{{route('referralTrack')}}"><span class="fa fa-bar-chart mr-3"></span> Referral Track</a>
           </li>
           <li>
+            <a href="#" class="trash"><span class="fa fa-trash mr-3"></span> Delete Account</a>
+          </li>
+          <li>
               <a href="{{route('logout')}}"><span class="fa fa-sign-out mr-3"></span> Logout</a>
           </li>
         </ul>
@@ -48,5 +51,33 @@
     <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('assets/js/main.js')}}"></script>
     <script src="{{asset('assets/js/popper.js')}}"></script>
+
+    <script>
+        $(document).ready(function(){
+            $(".trash").click(function(){
+
+                $.ajax({
+                    url:"{{route('deleteAccount')}}",
+                    type:"GET",
+                    success:function(responce){
+                        if(responce.success){
+                            location.reload();
+                        }else{
+                            alert(responce.msg);
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+        // This block handles any failure in the AJAX request
+        console.log('Error: ', textStatus, errorThrown); // Log the error details for debugging
+        alert('Something went wrong! Please try again.'); // Display a generic error message
+    }
+
+
+                })
+
+            })
+        })
+    </script>
+
   </body>
 </html>

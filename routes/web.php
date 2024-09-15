@@ -26,5 +26,6 @@ Route::group(['middleware' => ['is_logout']], function(){
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
     Route::get('/referral-track', [UserController::class, 'referralTrack'])->name('referralTrack');
+    Route::get('/delete-account', [UserController::class, 'deleteAccount'])->name('deleteAccount');
 
 });

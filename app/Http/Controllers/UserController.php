@@ -190,4 +190,18 @@ class UserController extends Controller
 
         return view('content.referralTrack', compact(['dateLabels', 'dateData']));
     }
+
+    public function deleteAccount(){
+        try{
+
+            User::where('id', Auth::User()->id)->delete();
+            // Network::where('user_id', Auth::User()->id)->delete();
+            $request->session()->flush();
+            Auth::logout();
+
+            return responce()->json(['success'=>true, 'msg'=>'Account deleted successfully']);
+        }catch(\Exception $e){
+            return responce()->json(['success'=>false, 'msg'=>$e->getMessage()]);
+        }
+    }
 }

@@ -20,6 +20,8 @@
             @if (count($networkData) > 0)
                 @php $x = 1; @endphp
                 @foreach ($networkData as $network)
+                @if (!empty($network->user->email))
+                {{-- {{var_dump($network)}} --}}
                     <tr>
                         <td>{{ $x++ }}</td>
                         <td>{{ $network->user->name }}</td>
@@ -32,6 +34,7 @@
                             @endif
                         </td>
                     </tr>
+                    @endif
                 @endforeach
             @else
                 <tr>
