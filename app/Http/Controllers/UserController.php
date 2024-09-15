@@ -164,7 +164,17 @@ class UserController extends Controller
 
         $networkCount = Network::where('parent_user_id', Auth::user()->id)->orwhere('user_id', Auth::user()->id)->count();
         $networkData = Network::with('user')->where('parent_user_id', Auth::user()->id)->get();
-        return view('content.dashboard', compact(['networkCount', 'networkData']));
+
+        $shareComponents = \Share::page(
+            URL::to('/').'referral-register?ref='.Auth::user()->referral_code,
+            'Share and Earn Points by Referral Link',
+        )
+        ->facebook()
+        ->twitter()
+        ->linkedin()
+        ->telegram()
+        ->whatsapp();
+        return view('content.dashboard', compact(['networkCount', 'networkData', 'shareComponents']));
     }
 
     public function logout(Request $request){

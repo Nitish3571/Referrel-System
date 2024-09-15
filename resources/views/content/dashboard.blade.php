@@ -2,6 +2,24 @@
 
 @section('content-section')
 
+    <style>
+        div#social-links ul li{
+            display: inline-block;
+            margin: 0 10px;
+        }
+        div#social-links ul li a{
+            padding: 10px;
+            border:1px solid #ccc;
+            margin:1px;
+            border-radius: 5px;
+            color:#222;
+            background-color: #ccc;
+
+        }
+    </style>
+
+    {!! $shareComponents !!}
+
     <h6 style="cursor: pointer" class="copy" data-code="{{ Auth::user()->referral_code }}"><span
             class="fa fa-copy mr-1"></span>Copy Referral Link</h6>
     <h2 class="mb-4" style="float: left">Dashboad</h2>

@@ -32,9 +32,9 @@
           <li>
             <a href="{{route('referralTrack')}}"><span class="fa fa-bar-chart mr-3"></span> Referral Track</a>
           </li>
-          <li>
+          {{-- <li>
             <a href="#" class="trash"><span class="fa fa-trash mr-3"></span> Delete Account</a>
-          </li>
+          </li> --}}
           <li>
               <a href="{{route('logout')}}"><span class="fa fa-sign-out mr-3"></span> Logout</a>
           </li>
